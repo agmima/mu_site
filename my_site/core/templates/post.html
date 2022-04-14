@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <a href="/create/" class="btn btn-primary">Add new post</a>
+
+        {% for post in object_list %}
+
+<div class="container cta-100 ">
+        <div class="container">
+          <div class="row blog">
+            <div class="col-md-12">
+              <div id="blogCarousel" class="carousel slide container-blog" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="row">
+                      <div class="col-md-4" >
+                        <div class="item-box-blog">
+                          <div class="item-box-blog-image">
+                            <!--Date-->
+                            <div class="item-box-blog-date  badge bg-success">
+                              <span class="mon">{% if post.labels == 'NEW' %}{{ post.labels }}{% endif %}</span> </div>
+                            <div class="item-box-blog-date  badge bg-danger">
+                              <span class="mon">{% if post.labels == 'RECENT' %}{{ post.labels }}{% endif %}</span> </div>
+                            <!--Image-->
+                            <img alt="" src="{{post.post_image.url}}">
+                          </div>
+                          <div class="item-box-blog-body">
+                            <!--Heading-->
+                            <div class="item-box-blog-heading">
+                              <a href="#" tabindex="0">
+                                <h5>{{post.title}}</h5>
+                              </a>
+                            </div>
+
+                            <div class="item-box-blog-text">
+                              <p> {{post.description}}</p>
+                            </div>
+                            <div class="mt"> <a href="/post/detail/{{ post.id }}" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--.row-->
+                  </div>
+                  <!--.item-->
+                  </div>
+                  <!--.item-->
+                </div>
+                <!--.carousel-inner-->
+              </div>
+              <!--.Carousel-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% endfor %}
+{% endblock %}

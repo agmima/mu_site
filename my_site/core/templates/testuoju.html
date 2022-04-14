@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <div class="card" style="width: 18rem;">
+          {% csrf_token %}
+
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+      {% for post in object_list %}
+    <h5 class="card-title"> {{post.title}} </h5>
+
+    <p class="card-text"> {{post.description}} </p>
+      {% endfor %}
+    <a href="create/" class="btn btn-primary">Kurti nauja</a>
+
+  </div>
+</div>
+
+
+{% endblock %}
